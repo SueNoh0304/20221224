@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFE3EE">
+<title>석영 ♥ 유리 결혼합니다</title>
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<!-- ▼ 배포 후 SITE_URL을 실제 주소로 바꾸세요 (README 참고) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://SITE_URL/">
+<meta property="og:image" content="https://SITE_URL/images/og-image.jpg">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="800">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:title" content="홍석영 ♥ 엄유리 결혼합니다">
+<meta property="og:description" content="2022년 12월 24일 토요일 오후 6시 · 광명무역센터컨벤션 3층 Grand Ballroom">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF1F6; --bg2:#FFE3EE; --bg3:#FFD3E3;
+  --pink:#FF9EC0; --rose:#F2729E; --deep:#D9477A;
+  --ink:#5E2440; --ink2:#8C4D68; --line:#F7C6D8; --white:#fff;
+  --cw:100%; --gap:0px;
+  --serif:'Gowun Batang',serif; --sans:'Gowun Dodum',system-ui,sans-serif;
+  --script:'Great Vibes',cursive; --latin:'Cormorant Garamond',serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-tap-highlight-color:transparent;overflow-x:hidden;word-break:keep-all}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--deep);outline-offset:3px;border-radius:6px}
+
+/* ---------- layout: 세로형(기본) ---------- */
+.stage{display:none}
+.card{position:relative;max-width:480px;margin:0 auto;background:var(--bg);min-height:100vh;box-shadow:0 0 50px rgba(217,71,122,.14);overflow:hidden}
+
+/* ---------- layout: 스테이지형(폴드·듀오·태블릿·PC) ---------- */
+@media (min-width:700px){
+  :root{--cw:clamp(340px,50vw,460px)}
+  body{overflow:hidden;height:100dvh}
+  .stage{display:block;position:fixed;inset:0;overflow:hidden;background:linear-gradient(160deg,#FFD3E3,#F2729E)}
+  .card{position:fixed;top:var(--gap);bottom:var(--gap);right:var(--gap);width:var(--cw);max-width:none;margin:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;min-height:0;scrollbar-width:thin;scrollbar-color:var(--pink) transparent}
+}
+@media (min-width:1200px){ :root{--gap:28px} .card{border-radius:30px;box-shadow:0 30px 80px rgba(150,30,80,.28)} }
+/* 폴드처럼 화면이 두 영역으로 나뉘는 기기: 오른쪽 영역 폭에 정확히 맞춤 */
+@media (horizontal-viewport-segments:2){ :root{--cw:env(viewport-segment-width 1 0,50vw);--gap:0px} .card{border-radius:0} }
+
+/* ---------- stage ---------- */
+.stage .slide{position:absolute;top:0;bottom:0;left:0;right:calc(var(--cw) + var(--gap)*2);background-size:cover;background-position:50% 55%;opacity:0;transform:scale(1.06);transition:opacity 1.6s ease,transform 7s ease}
+.stage .slide.on{opacity:1;transform:scale(1)}
+.stage::after{content:"";position:absolute;top:0;bottom:0;left:0;right:calc(var(--cw) + var(--gap)*2);background:linear-gradient(180deg,rgba(255,190,215,.1) 30%,rgba(217,71,122,.55) 100%),linear-gradient(90deg,rgba(255,200,222,.15),rgba(255,170,200,.35))}
+.stage-inner{position:absolute;z-index:2;left:0;top:0;bottom:0;right:calc(var(--cw) + var(--gap)*2);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:90px!important;text-align:center;padding:40px;color:#fff;text-shadow:0 2px 18px rgba(140,20,70,.45)}
+.stage-inner .kicker{font-family:var(--latin);letter-spacing:.42em;font-size:clamp(12px,1.2vw,16px);opacity:.95}
+.stage-inner h1{font-family:var(--script);font-weight:400;font-size:clamp(48px,6.4vw,104px);line-height:1.1;margin:.15em 0 .1em}
+.stage-inner .when{font-family:var(--serif);font-size:clamp(15px,1.5vw,20px)}
+.stage-dday{margin-top:26px;display:inline-flex;gap:10px;align-items:center;background:rgba(255,255,255,.28);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.6);border-radius:99px;padding:8px 20px;font-size:14px;text-shadow:none;color:var(--ink)}
+.stage-dday b{color:var(--deep);font-family:var(--latin);font-size:20px}
+.stage-hint{position:absolute;bottom:32px;font-size:13px;opacity:.9;animation:nudge 2.4s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(8px)}}
+
+/* ---------- 공통 섹션 ---------- */
+section{position:relative;padding:76px 28px;text-align:center}
+section.alt{background:var(--bg2)}
+.eyebrow{font-family:var(--latin);font-weight:600;letter-spacing:.34em;font-size:12px;color:var(--rose);text-transform:uppercase}
+.script{font-family:var(--script);font-weight:400;font-size:42px;line-height:1.2;color:var(--deep);margin:4px 0 26px}
+.lead{font-family:var(--serif);color:var(--ink2);font-size:15px;line-height:2}
+.divider{display:block;margin:30px auto;width:60px;height:14px;color:var(--pink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:0 22px;border-radius:99px;background:var(--deep);color:#fff;font-size:14px;box-shadow:0 6px 18px rgba(217,71,122,.28);transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:#fff;color:var(--deep);border:1px solid var(--line);box-shadow:none}
+.btn.sm{min-height:36px;padding:0 14px;font-size:13px}
+.btn svg{width:18px;height:18px;flex:none}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .9s ease,transform .9s ease}
+.js .reveal.in{opacity:1;transform:none}
+
+/* ---------- 1. 커버 ---------- */
+.cover{padding:28px 20px 56px;background:linear-gradient(180deg,var(--bg3) 0%,var(--bg2) 46%,var(--bg) 100%)}
+.cover-photo{position:relative;margin:8px auto 0;width:100%;aspect-ratio:3/4;border-radius:200px 200px 22px 22px;overflow:hidden;box-shadow:0 18px 40px rgba(217,71,122,.25);border:6px solid #fff}
+.cover-photo img{width:100%;height:100%;object-fit:cover;object-position:52% 60%}
+.passport{position:absolute;right:14px;bottom:14px;width:92px;aspect-ratio:3/4.2;border-radius:6px 12px 12px 6px;background:linear-gradient(145deg,#F58DB2,#D9477A);color:#FFF4F8;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:9px 6px;box-shadow:0 10px 22px rgba(120,20,60,.35);transform:rotate(4deg)}
+.passport b{font-family:var(--latin);font-size:10.5px;letter-spacing:.14em}
+.passport .wreath{width:54px;height:54px}
+.passport small{font-family:var(--latin);font-size:7px;letter-spacing:.1em}
+.cover .names{font-family:var(--script);font-size:46px;color:var(--deep);margin-top:22px;line-height:1.1}
+.cover .names span{font-size:30px;color:var(--pink);margin:0 6px}
+
+.ticket{position:relative;margin:22px auto 0;background:#fff;border-radius:18px;text-align:left;box-shadow:0 10px 30px rgba(217,71,122,.14);overflow:hidden}
+.ticket-head{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,var(--pink),var(--rose));color:#fff;padding:10px 18px;font-family:var(--latin);font-weight:600;letter-spacing:.22em;font-size:12px}
+.ticket-head svg{width:22px;height:22px}
+.ticket-body{display:grid;grid-template-columns:1fr 1fr;gap:14px 12px;padding:18px 18px 14px}
+.ticket label{display:block;font-family:var(--latin);font-weight:600;font-size:10.5px;letter-spacing:.18em;color:var(--rose)}
+.ticket .v{font-family:var(--serif);font-size:15px;color:var(--ink);line-height:1.45}
+.ticket .v.hl{color:var(--deep);font-weight:700;font-size:18px}
+.ticket .full{grid-column:1/-1}
+.ticket-stub{border-top:2px dashed var(--line);padding:12px 14px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;position:relative}
+.ticket-stub::before,.ticket-stub::after{content:"";position:absolute;top:-10px;width:18px;height:18px;border-radius:50%;background:var(--bg2)}
+.ticket-stub::before{left:-9px}.ticket-stub::after{right:-9px}
+.chip{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 2px;border-radius:12px;font-size:12px;color:var(--ink2);transition:background .2s}
+.chip:active,.chip:hover{background:var(--bg)}
+.chip svg{width:22px;height:22px;color:var(--deep)}
+.scroll-cue{margin-top:26px;font-size:12px;color:var(--rose);letter-spacing:.1em}
+.scroll-cue i{display:block;margin:6px auto 0;width:1px;height:28px;background:linear-gradient(var(--rose),transparent);animation:cue 1.8s infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- 2. 인사말 ---------- */
+.poem p{font-family:var(--serif);font-size:16px;line-height:2.2;color:var(--ink)}
+.parents{margin-top:8px;display:grid;gap:10px;font-family:var(--serif)}
+.parents div{font-size:15px;color:var(--ink2)}
+.parents small{font-size:12px;color:var(--rose);margin:0 4px}
+.parents b{font-size:19px;color:var(--ink);font-weight:700;margin-left:4px}
+
+.acc{margin-top:28px;background:#fff;border-radius:18px;border:1px solid var(--line);overflow:hidden;text-align:left}
+.acc-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:16px 20px;font-size:15px;color:var(--ink)}
+.acc-btn svg{width:18px;height:18px;color:var(--rose);transition:transform .3s}
+.acc-btn[aria-expanded=true] svg{transform:rotate(180deg)}
+.acc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.acc-panel>div{overflow:hidden}
+.acc-btn[aria-expanded=true]+.acc-panel{grid-template-rows:1fr}
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:0 10px;padding:4px 16px 18px}
+.contacts h4{font-size:13px;font-weight:400;padding:8px 0;border-bottom:1px solid var(--line);margin-bottom:6px;text-align:center}
+.contacts .groom h4{color:#B5407A}.contacts .bride h4{color:var(--rose)}
+.person{display:flex;align-items:center;justify-content:space-between;padding:8px 2px;font-size:14px}
+.person small{color:var(--ink2);font-size:12px;margin-right:4px}
+.person .acts{display:flex;gap:6px}
+.icon-btn{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--bg2);color:var(--deep)}
+.icon-btn svg{width:16px;height:16px}
+.note{font-size:11.5px;color:var(--ink2);opacity:.8;text-align:center;padding:0 16px 14px}
+
+/* ---------- 3. 캘린더 ---------- */
+.cal{background:#fff;border-radius:22px;padding:22px 18px 18px;box-shadow:0 10px 30px rgba(217,71,122,.1)}
+.cal-title{font-family:var(--latin);font-size:18px;color:var(--ink2);margin-bottom:14px}
+.cal-title b{font-size:38px;color:var(--deep);font-weight:600;margin-right:6px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);row-gap:6px;font-family:var(--latin);font-size:16px}
+.cal-grid .dow{font-size:11px;letter-spacing:.1em;color:var(--rose);padding-bottom:6px}
+.cal-grid span{height:38px;display:grid;place-items:center;border-radius:50%;margin:0 auto;width:38px}
+.cal-grid .sun{color:var(--deep)}
+.cal-grid .day-on{background:var(--deep);color:#fff;position:relative;box-shadow:0 4px 12px rgba(217,71,122,.4)}
+.cal-grid .day-on::after{content:"♥";position:absolute;top:-10px;right:-6px;font-size:13px;color:var(--rose)}
+.when-text{font-family:var(--serif);margin:22px 0 4px;font-size:16px}
+.countdown{display:flex;justify-content:center;gap:8px;margin:18px 0 10px}
+.countdown div{background:#fff;border-radius:14px;min-width:62px;padding:8px 4px;border:1px solid var(--line)}
+.countdown b{display:block;font-family:var(--latin);font-size:26px;color:var(--deep);line-height:1.2}
+.countdown small{font-size:10.5px;color:var(--ink2);letter-spacing:.1em}
+.dday-msg{font-size:14px;color:var(--ink2);margin-bottom:22px}
+.dday-msg b{color:var(--deep)}
+
+/* ---------- 4. 갤러리 ---------- */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.gallery button{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--bg3)}
+.gallery button:first-child{grid-column:span 2;grid-row:span 2}
+.gallery button:last-child{grid-column:1/-1;aspect-ratio:2/1}
+.gallery img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;transition:transform .4s}
+.gallery button:hover img{transform:scale(1.05)}
+.gallery .more-hidden{display:none}
+.gallery.open .more-hidden{display:block}
+.gal-hint{font-size:12px;color:var(--ink2);margin:14px 0 18px}
+
+/* ---------- 라이트박스 ---------- */
+.lb{position:fixed;inset:0;z-index:100;background:#2A0A18;display:none;touch-action:none;user-select:none;-webkit-user-select:none}
+.lb.open{display:block;animation:fade .25s}
+@keyframes fade{from{opacity:0}}
+.lb-stage{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden}
+.lb-stage img{max-width:100vw;max-height:100dvh;object-fit:contain;transform-origin:center center;will-change:transform;pointer-events:none}
+.lb-top{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:calc(12px + env(safe-area-inset-top)) 14px 12px;color:#FFE3EE;font-family:var(--latin);letter-spacing:.2em;font-size:14px;background:linear-gradient(rgba(60,12,34,.6),transparent);z-index:2}
+.lb .ctrl{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.12);color:#fff}
+.lb .ctrl svg{width:22px;height:22px}
+.lb .nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2}
+.lb .prev{left:12px}.lb .next{right:12px}
+.lb-hint{position:absolute;bottom:calc(20px + env(safe-area-inset-bottom));left:0;right:0;text-align:center;color:#FFD3E3;font-size:12px;opacity:.85;z-index:2;transition:opacity .4s}
+@media (hover:none){.lb .nav{display:none}}
+
+/* ---------- 5. 오시는 길 ---------- */
+.venue-name{font-family:var(--serif);font-size:21px;font-weight:700}
+.venue-hall{color:var(--deep);margin-bottom:6px}
+.addr{font-size:13.5px;color:var(--ink2);display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+.map{margin:22px 0 12px;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:#FFF7FA;position:relative}
+.map svg{display:block;width:100%;height:auto}
+.map-badge{position:absolute;left:10px;bottom:10px;font-size:11px;background:rgba(255,255,255,.9);color:var(--ink2);padding:3px 10px;border-radius:99px}
+.maps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:26px}
+.maps a{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;border-radius:12px;background:#fff;border:1px solid var(--line);font-size:13px}
+.maps i{width:18px;height:18px;border-radius:5px;display:grid;place-items:center;font-style:normal;font-size:10px;color:#fff;font-weight:700}
+.tabs{display:flex;background:#fff;border-radius:99px;padding:4px;border:1px solid var(--line)}
+.tabs button{flex:1;min-height:38px;border-radius:99px;font-size:13px;color:var(--ink2);transition:.25s}
+.tabs button[aria-selected=true]{background:var(--deep);color:#fff}
+.tab-panel{text-align:left;background:#fff;border-radius:18px;padding:20px 20px 18px;margin-top:10px;font-size:14px;line-height:1.8}
+.tab-panel[hidden]{display:none}
+.tab-panel h5{font-size:13px;color:var(--deep);margin:12px 0 4px;font-weight:700}
+.tab-panel h5:first-child{margin-top:0}
+.tab-panel ul{list-style:none}
+.tab-panel li{position:relative;padding-left:12px;margin:3px 0}
+.tab-panel li::before{content:"";position:absolute;left:0;top:.72em;width:5px;height:5px;border-radius:50%;background:var(--pink)}
+.tab-panel .sub{font-size:12.5px;color:var(--ink2)}
+.bus-no{display:inline-block;padding:0 7px;margin:2px 2px 0 0;border-radius:6px;background:var(--bg2);font-size:12.5px}
+
+/* ---------- 6. 마음 전하실 곳 ---------- */
+.acct{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 18px;border-top:1px solid var(--bg2)}
+.acct .who{font-size:12px;color:var(--ink2)}
+.acct .num{font-size:14.5px;letter-spacing:.02em}
+.acct .bank{color:var(--deep);margin-right:4px}
+.acc+.acc{margin-top:10px}
+
+/* ---------- 7. RSVP / 방명록 ---------- */
+.rsvp-box{background:#fff;border-radius:22px;padding:28px 22px;border:1px solid var(--line)}
+.gb-list{margin-top:18px;display:grid;gap:10px;text-align:left}
+.gb-item{background:#fff;border-radius:16px;padding:14px 16px;border:1px solid var(--line)}
+.gb-item b{font-size:14px}.gb-item time{font-size:11px;color:var(--ink2);margin-left:6px}
+.gb-item p{font-size:14px;color:var(--ink2);margin-top:4px}
+dialog{margin:auto;border:0;border-radius:24px;padding:26px 22px;width:min(92vw,400px);background:var(--bg);color:var(--ink);box-shadow:0 30px 80px rgba(120,20,60,.35)}
+dialog::backdrop{background:rgba(94,36,64,.45);backdrop-filter:blur(3px)}
+dialog h3{font-family:var(--serif);font-size:19px;text-align:center;margin-bottom:4px}
+.field{margin-top:14px;text-align:left}
+.field>span{display:block;font-size:12.5px;color:var(--ink2);margin-bottom:6px}
+.seg{display:flex;gap:6px}
+.seg label{flex:1}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:block;text-align:center;padding:10px 4px;border-radius:12px;background:#fff;border:1px solid var(--line);font-size:13.5px;cursor:pointer}
+.seg input:checked+span{background:var(--deep);border-color:var(--deep);color:#fff}
+.seg input:focus-visible+span{outline:2px solid var(--deep);outline-offset:2px}
+input[type=text],input[type=number],textarea{width:100%;font:inherit;font-size:15px;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink)}
+textarea{resize:none;height:84px}
+.dlg-actions{display:flex;gap:8px;margin-top:20px}
+.dlg-actions .btn{flex:1}
+
+/* ---------- 8. 공유 · 푸터 ---------- */
+.share .btn.kakao{background:#FEE500;color:#3A1D1D;box-shadow:none}
+footer{padding:46px 20px calc(110px + env(safe-area-inset-bottom));text-align:center;background:var(--bg3)}
+footer .script{font-size:34px;margin:0}
+footer p{font-size:12px;color:var(--ink2)}
+
+/* ---------- 하단 퀵바 ---------- */
+.quickbar{position:fixed;z-index:50;bottom:0;left:50%;width:min(100%,480px);transform:translate(-50%,120%);transition:transform .45s cubic-bezier(.2,.8,.2,1);padding:0 12px calc(12px + env(safe-area-inset-bottom))}
+.quickbar.show{transform:translate(-50%,0)}
+.quickbar nav{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:22px;box-shadow:0 10px 30px rgba(217,71,122,.22);padding:6px}
+.quickbar a,.quickbar button{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;font-size:11px;color:var(--ink2);border-radius:14px}
+.quickbar svg{width:21px;height:21px;color:var(--deep)}
+@media (min-width:700px){
+  .quickbar{left:auto;right:var(--gap);bottom:var(--gap);width:var(--cw);transform:translateY(120%)}
+  .quickbar.show{transform:none}
+  @media (min-width:1200px){.quickbar{padding-bottom:14px}}
+}
+
+/* ---------- 꽃잎 · 토스트 ---------- */
+.petals{position:fixed;inset:0;pointer-events:none;z-index:40;overflow:hidden}
+.petal{position:absolute;top:-30px;width:14px;height:11px;background:radial-gradient(ellipse at 30% 30%,#FFE3EE,#FF9EC0);border-radius:12px 1px 12px 1px;opacity:.75;animation:fall linear infinite}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(var(--rot))}}
+@media (prefers-reduced-motion:reduce){.petals,.stage-hint,.scroll-cue i{display:none}.reveal{opacity:1;transform:none}.stage .slide{transition:none}}
+.toast{position:fixed;z-index:200;left:50%;bottom:110px;transform:translate(-50%,20px);background:var(--ink);color:#FFE3EE;font-size:13.5px;padding:10px 20px;border-radius:99px;opacity:0;pointer-events:none;transition:.3s;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.3a4.3 4.3 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4.1M8.2 13.2l7.6 4.1"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24" fill="currentColor"><path d="M21 15.5v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V8.5l-8 5v2l8-2.5V18l-2 1.5V21l3.5-1 3.5 1v-1.5L13 18v-5z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+  <symbol id="i-l" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></symbol>
+  <symbol id="i-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-wreath" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M30 54C15 52 7 40 8 27M30 54c15-2 23-14 22-27"/><g fill="currentColor" stroke="none"><ellipse cx="9" cy="33" rx="2.6" ry="1.2" transform="rotate(-60 9 33)"/><ellipse cx="11" cy="40" rx="2.6" ry="1.2" transform="rotate(-40 11 40)"/><ellipse cx="16" cy="46" rx="2.6" ry="1.2" transform="rotate(-20 16 46)"/><ellipse cx="22" cy="51" rx="2.6" ry="1.2" transform="rotate(-8 22 51)"/><ellipse cx="51" cy="33" rx="2.6" ry="1.2" transform="rotate(60 51 33)"/><ellipse cx="49" cy="40" rx="2.6" ry="1.2" transform="rotate(40 49 40)"/><ellipse cx="44" cy="46" rx="2.6" ry="1.2" transform="rotate(20 44 46)"/><ellipse cx="38" cy="51" rx="2.6" ry="1.2" transform="rotate(8 38 51)"/></g><text x="30" y="27" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" fill="currentColor" stroke="none">12</text><text x="30" y="42" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" fill="currentColor" stroke="none">24</text></symbol>
+</svg>
+
+<!-- ===== 스테이지(넓은 화면 전용) ===== -->
+<aside class="stage" aria-hidden="true">
+  <div id="slides"></div>
+  <div class="stage-inner">
+    <div class="kicker">PASSPORT TO HAPPINESS</div>
+    <h1>Seokyoung &amp; Yuri</h1>
+    <div class="when">2022. 12. 24 SAT PM 6:00 · 광명무역센터컨벤션</div>
+    <div class="stage-dday"><span id="stageDdayLabel">예식까지</span><b id="stageDday">D-0</b></div>
+    <div class="stage-hint">오른쪽 청첩장을 넘겨 보세요 →</div>
+  </div>
+</aside>
+
+<!-- ===== 청첩장 본문 ===== -->
+<main class="card" id="card">
+
+  <!-- 1. 커버: 핵심 정보 한눈에 -->
+  <section class="cover" id="cover">
+    <div class="eyebrow">We're getting married</div>
+    <div class="cover-photo">
+      <img id="coverImg" alt="석영·유리 웨딩 사진">
+      <div class="passport" aria-hidden="true">
+        <b>PASSPORT</b>
+        <svg class="wreath"><use href="#i-wreath"/></svg>
+        <small>SEOKYOUNG &amp; YURI</small>
+      </div>
+    </div>
+    <div class="names">Seokyoung<span>&amp;</span>Yuri</div>
+
+    <div class="ticket">
+      <div class="ticket-head"><span>PASSPORT TO HAPPINESS</span><svg><use href="#i-plane"/></svg></div>
+      <div class="ticket-body">
+        <div><label>GROOM</label><div class="v">신랑 홍석영</div></div>
+        <div><label>BRIDE</label><div class="v">신부 엄유리</div></div>
+        <div><label>DATE</label><div class="v">DEC 24. 2022</div></div>
+        <div><label>DAY · TIME</label><div class="v">SATURDAY <span class="hl" style="color:var(--deep);font-weight:700">PM 6:00</span></div></div>
+        <div class="full"><label>LOCATION</label><div class="v">광명무역센터컨벤션 3층 Grand Ballroom</div></div>
+      </div>
+      <div class="ticket-stub">
+        <button class="chip" data-go="date"><svg><use href="#i-cal"/></svg>일정 저장</button>
+        <button class="chip" data-go="location"><svg><use href="#i-pin"/></svg>오시는 길</button>
+        <button class="chip" data-go="gallery"><svg><use href="#i-heart"/></svg>사진 보기</button>
+      </div>
+    </div>
+    <div class="scroll-cue">SCROLL<i></i></div>
+  </section>
+
+  <!-- 2. 인사말 + 혼주 -->
+  <section id="invitation">
+    <div class="reveal">
+      <div class="eyebrow">Invitation</div>
+      <div class="script">Save the Date</div>
+      <div class="poem">
+        <p>따뜻한 감성을 가르치는 남자와</p>
+        <p>올바른 생각을 가르치는 여자가</p>
+        <p>인생이라는 여행길을 함께 떠납니다.</p>
+        <p>꼭 잡은 두 손 놓지 않고 걷겠습니다.</p>
+        <p>크리스마스 선물같은 여러분 앞에서</p>
+        <p>감사한 마음을 담아 서약합니다.</p>
+      </div>
+      <svg class="divider" viewBox="0 0 60 14"><path d="M0 7h22M38 7h22" stroke="currentColor"/><path d="M30 12s-6-3.4-6-7.2A3 3 0 0 1 30 4a3 3 0 0 1 6 .8C36 8.6 30 12 30 12z" fill="currentColor"/></svg>
+      <div class="parents">
+        <div>홍기봉 · 윤정민<small>의 아들</small><b>석영</b></div>
+        <div>엄대현 · 이수진<small>의 딸</small><b>유리</b></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. 예식 일시 -->
+  <section class="alt" id="date">
+    <div class="reveal">
+      <div class="eyebrow">Wedding Day</div>
+      <div class="script">The Date</div>
+      <div class="cal">
+        <div class="cal-title"><b>12</b>December 2022</div>
+        <div class="cal-grid" id="calGrid"></div>
+      </div>
+      <p class="when-text">2022년 12월 24일 토요일 오후 6시</p>
+      <div class="countdown" id="countdown" aria-live="off">
+        <div><b id="cdD">0</b><small>DAYS</small></div>
+        <div><b id="cdH">0</b><small>HOUR</small></div>
+        <div><b id="cdM">0</b><small>MIN</small></div>
+        <div><b id="cdS">0</b><small>SEC</small></div>
+      </div>
+      <p class="dday-msg" id="ddayMsg"></p>
+      <div class="row">
+        <button class="btn" id="icsBtn"><svg><use href="#i-cal"/></svg>내 캘린더에 저장</button>
+        <a class="btn ghost" id="gcalBtn" target="_blank" rel="noopener">구글 캘린더</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 갤러리 -->
+  <section id="gallery">
+    <div class="reveal">
+      <div class="eyebrow">Our Moments</div>
+      <div class="script">Photo Gallery</div>
+      <div class="gallery" id="galleryGrid"></div>
+      <p class="gal-hint">사진을 누르면 크게 볼 수 있어요 · 두 손가락으로 확대</p>
+      <button class="btn ghost" id="moreBtn" aria-expanded="false">더 많은 사진 보기 <svg><use href="#i-down"/></svg></button>
+    </div>
+  </section>
+
+  <!-- 5. 오시는 길 -->
+  <section class="alt" id="location">
+    <div class="reveal">
+      <div class="eyebrow">Location</div>
+      <div class="script">How to Come</div>
+      <div class="venue-name">광명무역센터컨벤션</div>
+      <div class="venue-hall">3층 Grand Ballroom</div>
+      <div class="addr">
+        <span>광명시 일직로 72 (일직동 515번지) 광명국제무역센터 3층</span>
+      </div>
+      <div class="row" style="margin-top:12px">
+        <button class="btn ghost sm" data-copy="광명시 일직로 72 (일직동 515번지) 광명국제무역센터 3층" data-toast="주소를 복사했어요"><svg><use href="#i-copy"/></svg>주소 복사</button>
+        <a class="btn ghost sm" href="tel:028993535"><svg><use href="#i-phone"/></svg>02-899-3535</a>
+      </div>
+
+      <div class="map" role="img" aria-label="광명역과 광명국제무역센터 주변 약도">
+        <svg viewBox="0 0 360 250" font-family="Gowun Dodum,sans-serif">
+          <rect width="360" height="250" fill="#FFF7FA"/>
+          <g stroke="#FFD3E3" stroke-width="12" stroke-linecap="round" fill="none">
+            <path d="M40 60H300"/><path d="M40 60V230"/><path d="M40 210H300"/>
+            <path d="M120 60V210"/><path d="M200 60V210"/><path d="M40 130H200"/><path d="M200 105H300"/>
+          </g>
+          <path d="M318 20V240" stroke="#F4A9C4" stroke-width="14"/>
+          <text x="332" y="140" font-size="10" fill="#8C4D68" writing-mode="tb">서해안고속도로</text>
+          <rect x="136" y="140" width="52" height="60" rx="8" fill="#D9477A"/>
+          <text x="162" y="160" font-size="9" fill="#fff" text-anchor="middle">1호선</text>
+          <text x="162" y="174" font-size="10" fill="#fff" text-anchor="middle" font-weight="700">KTX</text>
+          <text x="162" y="189" font-size="10" fill="#fff" text-anchor="middle">광명역</text>
+          <text x="162" y="134" font-size="9" fill="#8C4D68" text-anchor="middle">광명종합터미널</text>
+          <rect x="54" y="72" width="54" height="24" rx="6" fill="#FFE3EE"/><text x="81" y="88" font-size="9" fill="#8C4D68" text-anchor="middle">이케아·롯데</text>
+          <rect x="136" y="72" width="52" height="24" rx="6" fill="#FFE3EE"/><text x="162" y="88" font-size="9" fill="#8C4D68" text-anchor="middle">코스트코</text>
+          <rect x="212" y="68" width="74" height="30" rx="8" fill="#F2729E"/>
+          <text x="249" y="80" font-size="8.5" fill="#fff" text-anchor="middle">광명국제</text>
+          <text x="249" y="92" font-size="8.5" fill="#fff" text-anchor="middle">무역센터</text>
+          <g transform="translate(249 40)"><path d="M0 22s-11-9.5-11-17a11 11 0 0 1 22 0C11 12.5 0 22 0 22z" fill="#D9477A"/><path d="M0 7.5s-4.5-2.8-4.5-5.7A2.3 2.3 0 0 1 0 .3a2.3 2.3 0 0 1 4.5 1.5C4.5 4.7 0 7.5 0 7.5z" fill="#fff"/></g>
+          <text x="232" y="128" font-size="9" fill="#8C4D68">자이타워</text>
+          <text x="226" y="170" font-size="9" fill="#8C4D68">광명역 센트럴자이</text>
+          <text x="226" y="196" font-size="9" fill="#8C4D68">새빛공원</text>
+          <text x="54" y="124" font-size="9" fill="#8C4D68">덕안삼거리</text>
+          <text x="54" y="164" font-size="9" fill="#8C4D68">광명역 데시앙</text>
+          <text x="290" y="236" font-size="9" fill="#8C4D68" text-anchor="end">광명IC</text>
+          <text x="290" y="50" font-size="9" fill="#8C4D68" text-anchor="end">일직분기점</text>
+        </svg>
+        <span class="map-badge">약도</span>
+      </div>
+      <div class="maps">
+        <a href="https://map.naver.com/p/search/%EA%B4%91%EB%AA%85%EB%AC%B4%EC%97%AD%EC%84%BC%ED%84%B0%EC%BB%A8%EB%B2%A4%EC%85%98" target="_blank" rel="noopener"><i style="background:#03C75A">N</i>네이버지도</a>
+        <a href="https://map.kakao.com/link/search/%EA%B4%91%EB%AA%85%EB%AC%B4%EC%97%AD%EC%84%BC%ED%84%B0%EC%BB%A8%EB%B2%A4%EC%85%98" target="_blank" rel="noopener"><i style="background:#FFCD00;color:#3A1D1D">K</i>카카오맵</a>
+        <a href="tmap://search?name=%EA%B4%91%EB%AA%85%EB%AC%B4%EC%97%AD%EC%84%BC%ED%84%B0%EC%BB%A8%EB%B2%A4%EC%85%98"><i style="background:#E4396C">T</i>티맵</a>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" aria-controls="t-sub">지하철</button>
+        <button role="tab" aria-selected="false" aria-controls="t-bus">버스</button>
+        <button role="tab" aria-selected="false" aria-controls="t-ktx">KTX·공항</button>
+        <button role="tab" aria-selected="false" aria-controls="t-car">자가용</button>
+      </div>
+      <div class="tab-panel" id="t-sub" role="tabpanel">
+        <ul>
+          <li>1호선 광명역(영등포 ↔ 광명역) 5번 출구 → 도보 5분<br><span class="sub">(금천구청역에서 5시 16분에 광명역행 지하철이 있으며, 1시간에 1대만 운행된다는 점 참고하시기 바랍니다.)</span></li>
+          <li>1호선 관악역 1번 출구 → 마을버스 1-1 (코스트코 광명점 하차) → 도보 1분</li>
+        </ul>
+      </div>
+      <div class="tab-panel" id="t-bus" role="tabpanel" hidden>
+        <h5>하차 정류장</h5>
+        <p>KTX광명역, 광명종합터미널, 코스트코 광명점, 광명역센트럴자이</p>
+        <h5>KTX광명역 셔틀버스</h5>
+        <ul>
+          <li><span class="bus-no">8507</span> 사당역 4번출구 ↔ 서울대입구역 2번출구 ↔ KTX광명역</li>
+          <li><span class="bus-no">6770</span> 인천공항 ↔ KTX광명역</li>
+        </ul>
+        <h5>노선</h5>
+        <ul>
+          <li>일반버스 <span class="bus-no">3</span><span class="bus-no">8-2</span><span class="bus-no">12</span><span class="bus-no">17</span><span class="bus-no">22</span><span class="bus-no">77B</span><span class="bus-no">102</span></li>
+          <li>직행버스 <span class="bus-no">3001</span><span class="bus-no">3002</span><span class="bus-no">G9633</span></li>
+          <li>간선버스 <span class="bus-no">505</span></li>
+          <li>공항버스 <span class="bus-no">6004</span><span class="bus-no">6014</span></li>
+          <li>지선버스 <span class="bus-no">5627</span><span class="bus-no">5633</span></li>
+          <li>마을버스 <span class="bus-no">1-1</span><span class="bus-no">1-3</span><span class="bus-no">88</span></li>
+        </ul>
+      </div>
+      <div class="tab-panel" id="t-ktx" role="tabpanel" hidden>
+        <h5>KTX</h5>
+        <ul><li>서울역, 용산역에서 KTX광명역까지 15분 소요</li></ul>
+        <h5>도심공항터미널</h5>
+        <ul><li>광명역 서편 "도심공항터미널"</li></ul>
+      </div>
+      <div class="tab-panel" id="t-car" role="tabpanel" hidden>
+        <h5>네비게이션</h5>
+        <ul>
+          <li>"광명국제무역센터" 입력</li>
+          <li>주소검색: "일직로 72" 또는 "일직동 515" 입력</li>
+        </ul>
+        <h5>주차 안내</h5>
+        <ul><li>광명무역센터컨벤션 지하 주차장<br><span class="sub">(식사 출입구에서 주차 등록 시 2시간 무료)</span></li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 공유 -->
+  <section class="share" id="share">
+    <div class="reveal">
+      <div class="eyebrow">Share</div>
+      <div class="script">Spread the Love</div>
+      <div class="row">
+        <button class="btn" id="shareBtn"><svg><use href="#i-share"/></svg>공유하기</button>
+        <button class="btn ghost" id="linkBtn"><svg><use href="#i-copy"/></svg>링크 복사</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="script">Thank you</div>
+    <p>홍석영 ♥ 엄유리 · 2022.12.24</p>
+  </footer>
+</main>
+
+<!-- 하단 퀵바 -->
+<div class="quickbar" id="quickbar">
+  <nav aria-label="바로가기">
+    <button data-go="date"><svg><use href="#i-cal"/></svg>일정</button>
+    <button data-go="location"><svg><use href="#i-pin"/></svg>오시는 길</button>
+    <button data-go="gallery"><svg><use href="#i-heart"/></svg>사진</button>
+    <button id="qShare"><svg><use href="#i-share"/></svg>공유</button>
+  </nav>
+</div>
+
+<!-- 사진 크게 보기 -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="사진 크게 보기">
+  <div class="lb-top"><span id="lbCount">1 / 18</span><button class="ctrl" id="lbClose" aria-label="닫기"><svg><use href="#i-x"/></svg></button></div>
+  <div class="lb-stage" id="lbStage"><img id="lbImg" alt=""></div>
+  <button class="ctrl nav prev" id="lbPrev" aria-label="이전 사진"><svg><use href="#i-l"/></svg></button>
+  <button class="ctrl nav next" id="lbNext" aria-label="다음 사진"><svg><use href="#i-r"/></svg></button>
+  <div class="lb-hint" id="lbHint">두 손가락으로 확대 · 두 번 탭하면 확대 · 옆으로 넘기기</div>
+</div>
+
+<div class="petals" id="petals" aria-hidden="true"></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(() => {
+document.documentElement.classList.add('js');
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const WEDDING = new Date('2022-12-24T18:00:00+09:00');
+
+/* ---------- 웨딩 사진 ---------- */
+const PHOTOS=Array.from({length:25},(_,k)=>{const n=String(k+1).padStart(2,'0');return{src:`images/gallery/${n}.jpg`,th:`images/thumbs/${n}.jpg`,alt:`석영·유리 웨딩 사진 ${k+1}`}});
+
+const COVER='images/cover.jpg';
+$('#coverImg').src=COVER;
+
+
+/* 스테이지 슬라이드 */
+const slides=$('#slides');
+{const d=document.createElement('div');d.className='slide on';d.style.backgroundImage=`url("${COVER}")`;slides.appendChild(d)}
+let sIdx=0;const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+/* ---------- 갤러리 ---------- */
+const grid=$('#galleryGrid'),INITIAL=9;
+PHOTOS.forEach((p,i)=>{const b=document.createElement('button');b.setAttribute('aria-label',`${p.alt} 크게 보기`);if(i>=INITIAL)b.className='more-hidden';b.innerHTML=`<img loading="lazy" decoding="async" src="${p.th}" alt="">`;b.onclick=()=>openLB(i);grid.appendChild(b)});
+$('#moreBtn').onclick=e=>{const o=grid.classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',o);e.currentTarget.firstChild.textContent=o?'사진 접기 ':'더 많은 사진 보기 ';e.currentTarget.querySelector('svg').style.transform=o?'rotate(180deg)':'';if(!o)$('#gallery').scrollIntoView({behavior:'smooth'})};
+
+/* ---------- 라이트박스 + 핀치 줌 ---------- */
+const lb=$('#lb'),img=$('#lbImg'),stage=$('#lbStage');
+let cur=0,sc=1,tx=0,ty=0,lastFocus=null;
+const pts=new Map();let g=null,lastTap=0;
+function apply(anim){img.style.transition=anim?'transform .25s ease':'none';img.style.transform=`translate(${tx}px,${ty}px) scale(${sc})`}
+function clampT(){const r=stage.getBoundingClientRect(),iw=img.offsetWidth*sc,ih=img.offsetHeight*sc;const mx=Math.max(0,(iw-r.width)/2),my=Math.max(0,(ih-r.height)/2);tx=Math.min(mx,Math.max(-mx,tx));ty=Math.min(my,Math.max(-my,ty))}
+function reset(){sc=1;tx=0;ty=0;apply(true)}
+function show(i){cur=(i+PHOTOS.length)%PHOTOS.length;img.src=PHOTOS[cur].src;img.alt=PHOTOS[cur].alt;$('#lbCount').textContent=`${cur+1} / ${PHOTOS.length}`;sc=1;tx=0;ty=0;apply(false)}
+function openLB(i){lastFocus=document.activeElement;show(i);lb.classList.add('open');document.documentElement.style.overflow='hidden';$('#lbClose').focus();$('#lbHint').style.opacity=.85;setTimeout(()=>$('#lbHint').style.opacity=0,3000)}
+function closeLB(){lb.classList.remove('open');document.documentElement.style.overflow='';lastFocus&&lastFocus.focus()}
+$('#lbClose').onclick=closeLB;$('#lbPrev').onclick=()=>show(cur-1);$('#lbNext').onclick=()=>show(cur+1);
+addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')closeLB();if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1)});
+const center=()=>{const r=stage.getBoundingClientRect();return{x:r.left+r.width/2,y:r.top+r.height/2}};
+function begin(){const c=center(),a=[...pts.values()];
+  if(a.length>=2){const m={x:(a[0].x+a[1].x)/2-c.x,y:(a[0].y+a[1].y)/2-c.y};g={mode:'pinch',d:Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y),s:sc,m,tx,ty}}
+  else if(a.length===1){g={mode:'pan',x:a[0].x,y:a[0].y,tx,ty,t:Date.now()}}}
+stage.addEventListener('pointerdown',e=>{stage.setPointerCapture(e.pointerId);pts.set(e.pointerId,{x:e.clientX,y:e.clientY});begin()});
+stage.addEventListener('pointermove',e=>{if(!pts.has(e.pointerId)||!g)return;pts.set(e.pointerId,{x:e.clientX,y:e.clientY});const a=[...pts.values()],c=center();
+  if(g.mode==='pinch'&&a.length>=2){const d=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y),ns=Math.min(5,Math.max(1,g.s*d/g.d));const m={x:(a[0].x+a[1].x)/2-c.x,y:(a[0].y+a[1].y)/2-c.y};const px=(g.m.x-g.tx)/g.s,py=(g.m.y-g.ty)/g.s;sc=ns;tx=m.x-sc*px;ty=m.y-sc*py;apply(false)}
+  else if(g.mode==='pan'){const dx=e.clientX-g.x,dy=e.clientY-g.y;if(sc>1){tx=g.tx+dx;ty=g.ty+dy}else{tx=dx;ty=0}apply(false)}});
+function end(e){const was=g;pts.delete(e.pointerId);
+  if(was&&was.mode==='pan'&&pts.size===0){const dx=e.clientX-was.x,dy=e.clientY-was.y,moved=Math.hypot(dx,dy);
+    if(sc===1&&Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)){show(cur+(dx<0?1:-1));g=null;return}
+    if(moved<10){const now=Date.now();if(now-lastTap<300){const c=center();if(sc>1)reset();else{const px=e.clientX-c.x,py=e.clientY-c.y;sc=2.5;tx=-px*1.5;ty=-py*1.5;clampT();apply(true)}lastTap=0}else lastTap=now}}
+  if(sc<=1.02){sc=1;tx=0;ty=0}clampT();apply(true);g=null;if(pts.size)begin()}
+stage.addEventListener('pointerup',end);stage.addEventListener('pointercancel',end);
+stage.addEventListener('wheel',e=>{e.preventDefault();const c=center(),mx=e.clientX-c.x,my=e.clientY-c.y,px=(mx-tx)/sc,py=(my-ty)/sc;sc=Math.min(5,Math.max(1,sc*(e.deltaY<0?1.15:1/1.15)));tx=mx-sc*px;ty=my-sc*py;if(sc===1){tx=ty=0}clampT();apply(false)},{passive:false});
+
+/* ---------- 캘린더 · D-day ---------- */
+const cg=$('#calGrid');['S','M','T','W','T','F','S'].forEach((d,i)=>cg.insertAdjacentHTML('beforeend',`<span class="dow${i?'':' sun'}">${d}</span>`));
+const first=new Date(2022,11,1).getDay();for(let i=0;i<first;i++)cg.insertAdjacentHTML('beforeend','<span></span>');
+for(let d=1;d<=31;d++){const dow=(first+d-1)%7;cg.insertAdjacentHTML('beforeend',`<span class="${d===24?'day-on':dow===0?'sun':''}"${d===24?' aria-label="12월 24일 예식일"':''}>${d}</span>`)}
+function tick(){const diff=WEDDING-new Date(),abs=Math.abs(diff),D=Math.floor(abs/864e5),H=Math.floor(abs/36e5)%24,M=Math.floor(abs/6e4)%60,S=Math.floor(abs/1e3)%60;
+  $('#cdD').textContent=D;$('#cdH').textContent=H;$('#cdM').textContent=M;$('#cdS').textContent=S;
+  if(diff>0){$('#ddayMsg').innerHTML=`석영 ♥ 유리의 결혼식이 <b>${D+1}일</b> 남았습니다`;$('#stageDdayLabel').textContent='예식까지';$('#stageDday').textContent=`D-${D+1}`}
+  else{$('#ddayMsg').innerHTML=`두 사람의 여행이 시작된 지 <b>${D+1}일</b>째입니다`;$('#stageDdayLabel').textContent='함께한 지';$('#stageDday').textContent=`D+${D+1}`}}
+tick();setInterval(tick,1000);
+
+const EVT={t:'홍석영 ♥ 엄유리 결혼식',loc:'광명무역센터컨벤션 3층 Grand Ballroom (광명시 일직로 72)',s:'20221224T090000Z',e:'20221224T110000Z'};
+$('#gcalBtn').href=`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(EVT.t)}&dates=${EVT.s}/${EVT.e}&location=${encodeURIComponent(EVT.loc)}`;
+$('#icsBtn').onclick=()=>{const ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//wedding//KO','BEGIN:VEVENT',`UID:seokyoung-yuri-20221224`,`DTSTAMP:${EVT.s}`,`DTSTART:${EVT.s}`,`DTEND:${EVT.e}`,`SUMMARY:${EVT.t}`,`LOCATION:${EVT.loc}`,'BEGIN:VALARM','TRIGGER:-P1D','ACTION:DISPLAY','DESCRIPTION:내일은 석영♥유리 결혼식','END:VALARM','END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));a.download='wedding.ics';a.click();toast('캘린더 파일을 저장했어요')};
+
+/* ---------- 아코디언 · 탭 ---------- */
+$$('.acc-btn').forEach(b=>b.onclick=()=>b.setAttribute('aria-expanded',b.getAttribute('aria-expanded')!=='true'));
+const tabs=$$('[role=tab]');tabs.forEach(t=>t.onclick=()=>{tabs.forEach(x=>{x.setAttribute('aria-selected',x===t);$('#'+x.getAttribute('aria-controls')).hidden=x!==t})});
+
+/* ---------- 복사 · 토스트 · 공유 ---------- */
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),1900)}
+async function copy(txt){try{await navigator.clipboard.writeText(txt)}catch{const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}}
+$$('[data-copy]').forEach(b=>b.onclick=async()=>{await copy(b.dataset.copy);toast(b.dataset.toast||'복사했어요')});
+async function share(){const data={title:'홍석영 ♥ 엄유리 결혼합니다',text:'2022년 12월 24일 토요일 오후 6시, 광명무역센터컨벤션',url:location.href};
+  if(navigator.share){try{await navigator.share(data)}catch{}}else{await copy(location.href);toast('청첩장 링크를 복사했어요')}}
+$('#qShare').onclick=share;$('#linkBtn').onclick=async()=>{await copy(location.href);toast('청첩장 링크를 복사했어요')};
+$('#shareBtn').onclick=share;
+
+/* ---------- 이동 ---------- */
+$$('[data-go]').forEach(b=>b.onclick=()=>document.getElementById(b.dataset.go).scrollIntoView({behavior:'smooth'}));
+
+
+/* ---------- 스크롤 등장 · 퀵바 ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+$$('.reveal').forEach(el=>io.observe(el));
+new IntersectionObserver(([e])=>$('#quickbar').classList.toggle('show',!e.isIntersecting),{threshold:.05}).observe($('#cover'));
+
+/* ---------- 꽃잎 ---------- */
+if(!reduce){const p=$('#petals');for(let i=0;i<14;i++){const s=document.createElement('span');s.className='petal';s.style.left=Math.random()*100+'vw';s.style.setProperty('--dx',(Math.random()*160-80)+'px');s.style.setProperty('--rot',(Math.random()*720-360)+'deg');s.style.animationDuration=(9+Math.random()*9)+'s';s.style.animationDelay=(-Math.random()*18)+'s';const k=.6+Math.random()*.7;s.style.transform=`scale(${k})`;p.appendChild(s)}}
+})();
+</script>
+</body>
+</html>
